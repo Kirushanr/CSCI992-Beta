@@ -1,7 +1,7 @@
 # CSCI992-Beta
 CSCI992 Project (BuynSell) code repository 
 
-#Instructions 
+# Instructions 
 1)Install composer 
     https://getcomposer.org/
 2)Install npm
