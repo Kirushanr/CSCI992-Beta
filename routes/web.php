@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Route::get('login', 'UserController@show');
 
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/post/ad', function () {
+    return view('adverts.home');
+})->name('post-ad');

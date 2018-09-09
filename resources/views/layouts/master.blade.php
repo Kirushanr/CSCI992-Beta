@@ -31,7 +31,7 @@
     
                 <div class="collapse navbar-collapse" id="navToggler">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link" href="#services">Sell Your Stuff +</a>
+                        <a class="nav-link" href="{{ route('post-ad') }}">Sell Your Stuff +</a>
                         <a class="nav-link" href="#services">Help</a>
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
                         <a class="nav-link" href="{{ route('register') }}">Register</a>
