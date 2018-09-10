@@ -13,3 +13,10 @@ CSCI992 Project (BuynSell) code repository
     run : npm run dev
 7. Finally run php artisan serve 
 you can access the website locally on localhost:8000
+
+# Repository Guide
+1. Fork the repository
+2. Pull the changes from Master branch to Development
+3. Commit your changes to development branch
+4. Create a pull request
+
