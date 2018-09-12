@@ -16,7 +16,8 @@ you can access the website locally on localhost:8000
 
 # Repository Guide
 1. Fork the repository
-2. Pull the changes from Master branch to Development
-3. Commit your changes to development branch
+2. Create a branch (yourname-development)
+3. Push the changes to the branch you have created
 4. Create a pull request
+5. Pull request will be reviewed and branch will be merged with master
 
