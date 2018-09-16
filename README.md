@@ -8,6 +8,7 @@ CSCI992 Project (BuynSell) code repository
     *https://www.npmjs.com/get-npm
 3. Change to your project directory 
 3.1 rename .env.example file to .env (warning do not commit .env file to Github)
+3.2 run php artisan key:generate in the command prompt
 4. Run composer install 
 5. Run npm install 
 6. After running npm install 
