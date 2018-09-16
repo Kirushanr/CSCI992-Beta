@@ -7,11 +7,12 @@ CSCI992 Project (BuynSell) code repository
 2. Install npm
     *https://www.npmjs.com/get-npm
 3. Change to your project directory 
+3.1 rename .env.example file to .env (warning do not commit .env file to Github)
 4. Run composer install 
 5. Run npm install 
 6. After running npm install 
     run : npm run dev
-7. Finally run php artisan serve 
+8. Finally run php artisan serve 
 you can access the website locally on localhost:8000
 
 # Repository Guide
