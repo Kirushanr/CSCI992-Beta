@@ -10471,3 +10471,7 @@ a.text-dark:focus {
   }
 }
 
+.form-horizontal {
+  margin-left: 20px;
+}
+

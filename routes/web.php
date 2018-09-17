@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Route::get('login', 'UserController@show');
 
 Auth::routes();
@@ -22,3 +20,13 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/post/ad', function () {
     return view('adverts.home');
 })->name('post-ad');
+
+// users personal page
+Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+
+// post and get
+Route::get('/post/ad/{type}', 'AdsController@create')->name('createAd');
+Route::post('/post/ad/{type}', 'AdsController@store')->name('publishAd');
+
+
+Route::post('/post/ad/{ad}/edit', 'AdsController@edit')->name('editAd');
