@@ -17,7 +17,7 @@ class CreateElectronicsTable extends Migration
             $table->increments('id');
             $table->string('model');
             $table->string('warranty');
-            $table->unsignedInteger('advert_id')->nullable();
+            $table->unsignedInteger('advert_id');
             $table->foreign('advert_id')->references('id')->on('ads')->onDelete('cascade');
             $table->timestamps();
         });

@@ -20,7 +20,7 @@ class CreateAdsTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('visibility');
             $table->integer('type');
-            $table->integer('user_id')->index();
+            $table->integer('user_id');
             $table->string('image');
             $table->timestamps();
         });

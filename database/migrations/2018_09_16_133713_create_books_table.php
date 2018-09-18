@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('courseCode');
             $table->string('author');
             $table->string('edition');
-            $table->unsignedInteger('advert_id')->nullable();
+            $table->unsignedInteger('advert_id');
             $table->foreign('advert_id')->references('id')->on('ads')->onDelete('cascade');
             $table->timestamps();
         });
