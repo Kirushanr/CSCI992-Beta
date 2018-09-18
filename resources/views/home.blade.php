@@ -17,7 +17,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg" placeholder="Search for">
+                            <input type="text" class="form-control form-control-lg" placeholder="Search for" name="query">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
                             </div>

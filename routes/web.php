@@ -22,3 +22,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/post/ad', function () {
     return view('adverts.home');
 })->name('post-ad');
+
+Route::get('/search', function(){
+    return view('search.search');
+})->name('search');
