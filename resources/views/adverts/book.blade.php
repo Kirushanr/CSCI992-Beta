@@ -6,37 +6,37 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="title" name="title" placeholder="Book Name">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Book Name" value="{{ old('title') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">ISBN</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="isbn" name="isbn" placeholder="ISBN No.">
+                <input type="text" class="form-control" id="isbn" name="isbn" placeholder="ISBN No." value="{{ old('isbn') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Course Code</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="code" name="code" placeholder="Course Code">
+                <input type="text" class="form-control" id="code" name="code" placeholder="Course Code" value="{{ old('code') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Author</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="author" name="author" placeholder="Author">
+                <input type="text" class="form-control" id="author" name="author" placeholder="Author" value="{{ old('author') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Edition</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="edition" name="edition" placeholder="Edition">
+                <input type="text" class="form-control" id="edition" name="edition" placeholder="Edition" value="{{ old('edition') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Price</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                <input type="text" class="form-control" id="price" name="price" placeholder="Price" value="{{ old('price') }}">
             </div>
         </div>
         <div class="form-group">
@@ -59,7 +59,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Description</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="description" name="description" placeholder="comment"></textarea>
+                <textarea class="form-control" id="description" name="description" placeholder="comment" value="{{ old('description') }}"></textarea>
             </div>
         </div>
         <div class="form-group">

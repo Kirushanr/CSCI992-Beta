@@ -6,25 +6,25 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="title" name="title" placeholder="electronic Name">
+                <input type="text" class="form-control" id="title" name="title" placeholder="electronic Name" value="{{ old('title') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Model</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="model" name="model" placeholder="model">
+                <input type="text" class="form-control" id="model" name="model" placeholder="model" value="{{ old('model') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Warranty</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="warranty" name="warranty" placeholder="warranty">
+                <input type="text" class="form-control" id="warranty" name="warranty" placeholder="warranty" value="{{ old('warranty') }}">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Price</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                <input type="text" class="form-control" id="price" name="price" placeholder="Price" value="{{ old('price') }}">
             </div>
         </div>
         <div class="form-group">
@@ -47,7 +47,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Description</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="description" name="description" placeholder="comment"></textarea>
+                <textarea class="form-control" id="description" name="description" placeholder="comment" value="{{ old('description') }}"></textarea>
             </div>
         </div>
         <div class="form-group">

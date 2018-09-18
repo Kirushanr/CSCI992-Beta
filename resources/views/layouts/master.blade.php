@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    @include('shared._msg')
+
     <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #0c2340;">
         <div class="container">
             <a href="{{ route('home') }}" class="navbar-brand">

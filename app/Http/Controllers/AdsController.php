@@ -36,11 +36,11 @@ class AdsController extends Controller
             if ($type == 1) {
                 $this->validate($request, [
                     'title' => 'required|max:250',
-                    'isbn' => 'required|max:50',
-                    'code' => 'required|max:50',
+                    'isbn' => 'required|min:10|max:13',
+                    'code' => 'required|min:7|max:10',
                     'author' => 'required|max:50',
                     'edition' => 'required|max:50',
-                    'price' => 'required|max:50',
+                    'price' => 'required|numeric|digits_between:0,10',
                     'visibility' => 'required',
                     'uploadfile' => 'required',
                     'description' => 'required|max:500'
