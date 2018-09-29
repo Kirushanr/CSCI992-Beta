@@ -23,10 +23,10 @@ Route::get('/post/ad', function () {
     return view('adverts.home');
 })->name('post-ad');
 
-Route::get('/search', function(){
-    return view('search.search');
-})->name('search');
 
 Route::get('/dashboard',function(){
     return view('admin.dashboard');
 });
+
+
+Route::get('/search',SearchAdvertController::class);
