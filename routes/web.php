@@ -26,3 +26,7 @@ Route::get('/post/ad', function () {
 Route::get('/search', function(){
     return view('search.search');
 })->name('search');
+
+Route::get('/dashboard',function(){
+    return view('admin.dashboard');
+});
