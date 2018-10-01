@@ -10,19 +10,19 @@
             <div class="row  justify-content-center advert-type">
             
                 <div class="col-lg-4">
-                    <a href="">
+                    <a href="{{route('post-ad-type.show', ['type' => 'book'])}}">
                     <img src="{{asset('images/books.svg')}}" alt="..." class="rounded-0" style="height:140;width:140">
                     <h3 class="">Books</h3>
                     </a>
                 </div>
                 <div class="col-lg-4">
-                   <a href="#">
+                   <a href="{{route('post-ad-type.show', ['type' => 'electronics'])}}">
                    <img src="{{asset('images/electronics.svg')}}" alt="..." class="rounded-0 " style="height:140;width:140">
                     <h3 class="">Electronics</h3>
                    </a>
                 </div>
                 <div class="col-lg-4">
-                <a href="">   
+                <a href="{{route('post-ad-type.show', ['type' => 'essentials'])}}">   
                     <img src="{{asset('images/essentials.svg')}}" alt="..." class="rounded-0" style="height:140;width:140">
                     <h3 class="">Essentials</h3>
                 </a>
