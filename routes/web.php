@@ -32,5 +32,14 @@ Route::get('/post/ad','AdvertsController@getAdvertHome')->name('post-ad');
 //Route to GET the post advert page based on the type parameter
 Route::get('/post/ad/{type}','AdvertsController@getAdvert')->name('post-ad-type.show');
 
+//Route to get review post
+Route::get('posts','ReviewPostController@posts')->name('posts');
+
+//Route to post review post
+Route::post('posts', 'ReviewPostController@postPost')->name('posts.post');
+
+//Route to get post id
+Route::get('post/{id}', 'ReviewPostController@show')->name('posts.show');
+
 
 Route::get('/search',SearchAdvertController::class);
