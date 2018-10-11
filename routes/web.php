@@ -19,18 +19,18 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
-
-
 Route::get('/dashboard',function(){
     return view('admin.dashboard');
 });
 
 //Route to GET the home/main page of post advert
-Route::get('/post/ad','AdvertsController@getAdvertHome')->name('post-ad');
+Route::get('/post/ad','AdvertsController@index')->name('post-ad');
 
 //Route to GET the post advert page based on the type parameter
 Route::get('/post/ad/{type}','AdvertsController@getAdvert')->name('post-ad-type.show');
 
-
 Route::get('/search',SearchAdvertController::class);
+
+Route::post('/post/ad','AdvertsController@postAdvert')->name('store-ad');
+
+Route::get('/advert/{id}','AdvertsController@viewAdvert')->name('view-advert');
