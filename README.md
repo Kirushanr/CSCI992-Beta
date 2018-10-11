@@ -13,6 +13,7 @@ CSCI992 Project (BuynSell) code repository
 7. Run npm install 
 8. After running npm install 
     run : npm run dev
+9. Run php artisan storage:link
 9. Finally run php artisan serve 
 you can access the website locally on localhost:8000
 
