@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the adverts posted by the user
+     */
+    public function adverts()
+    {
+        return $this->hasMany('App\Advert');
+    }
 }
