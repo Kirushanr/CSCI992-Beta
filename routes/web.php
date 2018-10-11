@@ -22,11 +22,15 @@ Route::get('/post/ad', function () {
 })->name('post-ad');
 
 // users personal page
-Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+//Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+
+Route::get('/user/selling', 'UserController@selling')->name('user.selling');
+Route::get('/user/wish', 'UserController@wish')->name('user.wish');
 
 // post and get
 Route::get('/post/ad/{type}', 'AdsController@create')->name('createAd');
 Route::post('/post/ad/{type}', 'AdsController@store')->name('publishAd');
 
 
-Route::post('/post/ad/{ad}/edit', 'AdsController@edit')->name('editAd');
+Route::get('/post/ad/{ad}/edit', 'AdsController@edit')->name('editAd');
+Route::delete('/post/ad/{ad}', 'AdsController@remove')->name('deleteAd');

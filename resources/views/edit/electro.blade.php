@@ -1,12 +1,12 @@
 @extends('layouts.master')
 @section('content')
     @include('shared._errors')
-    <form class="form-horizontal" action="{{ route('createAd', 3) }}" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" action="{{ route('createAd', 2) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
             <label class="col-sm-2 control-label">Title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="title" name="title" placeholder="KitchenWare Name" value="{{ old('title') }}">
+                <input type="text" class="form-control" id="title" name="title" placeholder="electronic Name" value="{{ old('title') }}">
             </div>
         </div>
         <div class="form-group">

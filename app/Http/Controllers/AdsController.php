@@ -165,4 +165,31 @@ class AdsController extends Controller
             return redirect('/');
         }
     }
+
+    public function remove(Request $request, Ad $ad)
+    {
+        $request->user()->ads()->where('id', $ad->id)->delete();
+    }
+
+    public function edit($ad_id)
+    {
+        //$advert = DB::table('ads')->where('id', $ad_id)->pluck('type');
+        $advert = Ad::where('id', $ad_id);
+        $type = $advert->pluck('type')[0];
+
+
+
+        if ($type == '1') {
+            // Book::where
+            $categories = DB::table('books')->where('advert_id', $ad_id);
+            return view('edit.book', compact('advert', 'categories'));
+        } elseif ($type == '2') {
+            $categories = DB::table('electronics')->where('advert_id', $ad_id);
+            return view('edit.electro', compact('advert', 'categories'));
+        } else {
+            $categories = DB::table('kitchenwares')->where('advert_id', $ad_id);
+            return view('edit.kitchen', compact('advert', 'categories'));
+        }
+
+    }
 }

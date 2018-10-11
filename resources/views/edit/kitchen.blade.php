@@ -6,7 +6,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="title" name="title" placeholder="KitchenWare Name" value="{{ old('title') }}">
+                <input type="text" class="form-control" id="title" name="title" placeholder="KitchenWare Name" value="{{ $advert->pluck('title') }}">
             </div>
         </div>
         <div class="form-group">

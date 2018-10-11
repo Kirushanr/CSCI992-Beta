@@ -4,7 +4,58 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Sweetalert2
+@import "node_modules/sweetalert2/src/sweetalert2";
+
 // form
 .form-horizontal {
   margin-left: 20px;
+}
+
+.product_list {
+
+  .preview {
+    width: 200px;
+    float: left;
+    img {
+      max-width: 180px;
+      max-height: 180px;
+    }
+  }
+
+  td {
+    padding-left: 30px;
+  }
+
+  .product_info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 12px;
+    width: 500px;
+
+    .product_title {
+      display: block;
+    }
+
+    .product_title a {
+      color: #3c3c3c;
+      font-size: 14px;
+    }
+
+    .product_text {
+      //float: left;
+      font-size: 14px;
+      .product_title {
+        //text-decoration: line-through;
+        font-weight: bold;
+      }
+    }
+
+    .price {
+      font-size: 12px;
+      font-weight: 700;
+      color: #3c3c3c;
+    }
+  }
 }
