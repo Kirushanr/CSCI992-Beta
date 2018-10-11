@@ -17,7 +17,6 @@ class CreateElectronicsTable extends Migration
             $table->increments('id');
             $table->text('model');
             $table->string('type',100);
-            
             $table->boolean('has_warranty')->default(true);
             $table->unsignedInteger('advert_id');            
             $table->foreign('advert_id')->references('id')->on('adverts')
@@ -32,7 +31,9 @@ class CreateElectronicsTable extends Migration
     public function down()
     {
         Schema::table('electronics', function (Blueprint $table) {
-            //
+            Schema::disableForeignKeyConstraints();
+            Schema::dropIfExists('electronics');
+            Schema::enableForeignKeyConstraints();
         });
     }
 }

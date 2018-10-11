@@ -33,7 +33,9 @@ class CreateBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            //
+            Schema::disableForeignKeyConstraints();
+            Schema::dropIfExists('books');
+            Schema::enableForeignKeyConstraints();
         });
     }
 }

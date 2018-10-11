@@ -39,7 +39,9 @@ class CreateAdvertsTable extends Migration
     public function down()
     {
         Schema::table('adverts', function (Blueprint $table) {
-            //
+            Schema::disableForeignKeyConstraints();
+            Schema::dropIfExists('adverts');
+            Schema::enableForeignKeyConstraints();
         });
     }
 }
