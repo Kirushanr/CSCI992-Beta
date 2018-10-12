@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
     @include('shared._errors')
-    <form class="form-horizontal" action="{{ route('createAd', 1) }}" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" action="{{ route('updateAd', $advert->pluck('id')[0]) }}" method="post" enctype="multipart/form-data">
+        {{ method_field('PATCH') }}
         {{ csrf_field() }}
         <div class="form-group">
             <label class="col-sm-2 control-label">Title</label>
@@ -53,8 +54,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="sr-only">Image</label>
-            <input type="file" id="uploadfile" name="uploadfile">
+            <label class="col-sm-2 control-label">Image</label><br />
+            <!-- image upload and display -->
+            <input style="padding:10px;background:#2d2d2d;margin-left: 15px;" type='file' onchange="readURL(this);" id="uploadfile" name="uploadfile"/><br/><br/>
+            <img style="max-width:180px;margin-left: 15px;" id="blah" src="/uploads/20180917/{{ $advert->pluck('image')[0] }}" alt="your image" />
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Description</label>
@@ -64,9 +67,25 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Publish</button>
+                <button type="submit" class="btn btn-default">Alter</button>
             </div>
         </div>
     </form>
+@endsection
 
+@section('script')
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

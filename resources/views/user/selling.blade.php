@@ -57,11 +57,10 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            // 监听 移除 按钮的点击事件
             $('.btn-remove').click(function () {
-                // $(this) 可以获取到当前点击的 移除 按钮的 jQuery 对象
-                // closest() 方法可以获取到匹配选择器的第一个祖先元素，在这里就是当前点击的 移除 按钮之上的 <tr> 标签
-                // data('id') 方法可以获取到我们之前设置的 data-id 属性的值，也就是对应的 SKU id
+
+                // closest() will get the ancestor node, it is the tr node here
+                // data('id') method will get the value of data-id
                 var id = $(this).closest('tr').data('id');
                 swal({
                     title: "Are you sure about remove your ad？",
@@ -75,7 +74,7 @@
                     dangerMode: true,
                 })
                     .then(function(willDelete) {
-                        // 用户点击 确定 按钮，willDelete 的值就会是 true，否则为 false
+                        // User click Yes: willDelete true(vice versa)
                         if (!willDelete) {
                             return;
                         }

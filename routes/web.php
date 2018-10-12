@@ -34,3 +34,4 @@ Route::post('/post/ad/{type}', 'AdsController@store')->name('publishAd');
 
 Route::get('/post/ad/{ad}/edit', 'AdsController@edit')->name('editAd');
 Route::delete('/post/ad/{ad}', 'AdsController@remove')->name('deleteAd');
+Route::patch('/post/ad/{ad}', 'AdsController@update')->name('updateAd');

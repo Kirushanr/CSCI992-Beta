@@ -24,9 +24,8 @@ class AdsController extends Controller
         }
     }
 
-    public function store($type, Request $request, User $user)
+    public function store($type, Request $request)
     {
-
         // check login
         if (Auth::check())
         {
@@ -177,8 +176,6 @@ class AdsController extends Controller
         $advert = Ad::where('id', $ad_id);
         $type = $advert->pluck('type')[0];
 
-
-
         if ($type == '1') {
             // Book::where
             $categories = DB::table('books')->where('advert_id', $ad_id);
@@ -191,5 +188,148 @@ class AdsController extends Controller
             return view('edit.kitchen', compact('advert', 'categories'));
         }
 
+    }
+
+    public function update($ad_id, Request $request)
+    {
+        $advert = Ad::where('id', $ad_id);
+        $type = $advert->pluck('type')[0];
+        //return $type;
+        // check login
+        if (Auth::check())
+        {
+            // store book info
+            if ($type == '1') {
+                $this->validate($request, [
+                    'title' => 'required|max:250',
+                    'isbn' => 'required|min:10|max:13',
+                    'code' => 'required|min:7|max:10',
+                    'author' => 'required|max:50',
+                    'edition' => 'required|max:50',
+                    'price' => 'required|numeric|digits_between:0,10',
+                    'visibility' => 'required',
+                    'uploadfile' => 'required',
+                    'description' => 'required|max:500'
+                ]);
+
+                if ($request->hasFile('uploadfile')) {
+                    // upload file
+                    $uploadfile = $request->file('uploadfile');
+                    // get file extension
+                    $ext = $uploadfile->getClientOriginalExtension();
+
+                    // deal with the file name
+                    $temp_name = str_random(20);
+                    $filename = $temp_name . "." . $ext;
+                    $dirname = date('Ymd',time());
+                    // save image
+                    $uploadfile->move('./uploads/' . $dirname, $filename);
+                }
+
+                $advert->update([
+                    'title' => $request->title,
+                    'price' => $request->price,
+                    'description' => $request->description,
+                    'visibility' => $request->visibility,
+                    'user_id' => auth::user()->id,
+                    'type' => $type,
+                    'image' => $filename
+                ]);
+
+                $book = Book::where('advert_id', $ad_id);
+                $book->update([
+                    'isbn' => $request->isbn,
+                    'courseCode' => $request->code,
+                    'author' => $request->author,
+                    'edition' => $request->edition,
+                ]);
+            } elseif($type == '2') {
+                $this->validate($request, [
+                    'title' => 'required|max:250',
+                    'model' => 'required|max:50',
+                    'warranty' => 'required|max:50',
+                    'price' => 'required|max:50',
+                    'visibility' => 'required',
+                    'uploadfile' => 'required',
+                    'description' => 'required|max:500'
+                ]);
+
+                if ($request->hasFile('uploadfile')) {
+                    // upload file
+                    $uploadfile = $request->file('uploadfile');
+                    // get file extension
+                    $ext = $uploadfile->getClientOriginalExtension();
+
+                    // deal with the file name
+                    $temp_name = str_random(20);
+                    $filename = $temp_name . "." . $ext;
+                    $dirname = date('Ymd',time());
+                    // save image
+                    $uploadfile->move('./uploads/' . $dirname, $filename);
+                }
+
+                $advert->update([
+                    'title' => $request->title,
+                    'price' => $request->price,
+                    'description' => $request->description,
+                    'visibility' => $request->visibility,
+                    'user_id' => auth::user()->id,
+                    'type' => $type,
+                    'image' => $filename
+                ]);
+
+                $electronic = Electronic::where('advert_id', $ad_id);
+                $electronic->update([
+                    'model' => $request->model,
+                    'warranty' => $request->warranty,
+                ]);
+            } else {
+                $this->validate($request, [
+                    'title' => 'required|max:250',
+                    'model' => 'required|max:50',
+                    'warranty' => 'required|max:50',
+                    'price' => 'required|max:50',
+                    'visibility' => 'required',
+                    'uploadfile' => 'required',
+                    'description' => 'required|max:500'
+                ]);
+
+                if ($request->hasFile('uploadfile')) {
+                    // upload file
+                    $uploadfile = $request->file('uploadfile');
+                    // get file extension
+                    $ext = $uploadfile->getClientOriginalExtension();
+
+                    // deal with the file name
+                    $temp_name = str_random(20);
+                    $filename = $temp_name . "." . $ext;
+                    $dirname = date('Ymd',time());
+                    // save image
+                    $uploadfile->move('./uploads/' . $dirname, $filename);
+                }
+
+                $advert->update([
+                    'title' => $request->title,
+                    'price' => $request->price,
+                    'description' => $request->description,
+                    'visibility' => $request->visibility,
+                    'user_id' => auth::user()->id,
+                    'type' => $type,
+                    'image' => $filename
+                ]);
+
+                $kitchenware = Kitchenware::where('advert_id', $ad_id);
+                $kitchenware->update([
+                    'model' => $request->model,
+                    'warranty' => $request->warranty,
+                ]);
+            }
+            return redirect('/user/selling');
+
+            //session()->flash('success', 'advertise information has updated!');
+        } else {
+            echo 'please login';
+            return redirect('/');
+        }
     }
 }

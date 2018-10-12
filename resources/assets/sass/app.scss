@@ -4,12 +4,25 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Sweetalert2
-@import "node_modules/sweetalert2/src/sweetalert2";
-
 // form
 .form-horizontal {
   margin-left: 20px;
+}
+
+.form-group {
+
+  .radio {
+    margin-left:15px;
+  }
+
+  .pic {
+    margin-left: 15px;
+    width: 400px;
+  }
+
+  #uploadfile {
+    margin-left: 15px;
+  }
 }
 
 .product_list {
@@ -59,3 +72,8 @@
     }
   }
 }
+
+// image
+.uploadify{display:inline-block;}
+.uploadify-button{border:none; border-radius:5px; margin-top:8px;}
+table.add_tab tr td span.uploadify-button-text{color: #FFF; margin:0;}
