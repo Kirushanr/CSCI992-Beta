@@ -27,11 +27,14 @@ Route::get('/post/ad', function () {
 Route::get('/user/selling', 'UserController@selling')->name('user.selling');
 Route::get('/user/wish', 'UserController@wish')->name('user.wish');
 
-// post and get
+// post ad
 Route::get('/post/ad/{type}', 'AdsController@create')->name('createAd');
 Route::post('/post/ad/{type}', 'AdsController@store')->name('publishAd');
 
-
+// edit(delete and update)
 Route::get('/post/ad/{ad}/edit', 'AdsController@edit')->name('editAd');
 Route::delete('/post/ad/{ad}', 'AdsController@remove')->name('deleteAd');
 Route::patch('/post/ad/{ad}', 'AdsController@update')->name('updateAd');
+
+// advertise detail page
+Route::get('/ad/{ad}', 'AdsController@show')->name('showAd');

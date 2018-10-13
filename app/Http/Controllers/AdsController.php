@@ -221,9 +221,9 @@ class AdsController extends Controller
                     // deal with the file name
                     $temp_name = str_random(20);
                     $filename = $temp_name . "." . $ext;
-                    $dirname = date('Ymd',time());
+                    //$dirname = date('Ymd',time());
                     // save image
-                    $uploadfile->move('./uploads/' . $dirname, $filename);
+                    $uploadfile->move('./uploads/20180917/', $filename);
                 }
 
                 $advert->update([
@@ -263,9 +263,9 @@ class AdsController extends Controller
                     // deal with the file name
                     $temp_name = str_random(20);
                     $filename = $temp_name . "." . $ext;
-                    $dirname = date('Ymd',time());
+                    //$dirname = date('Ymd',time());
                     // save image
-                    $uploadfile->move('./uploads/' . $dirname, $filename);
+                    $uploadfile->move('./uploads/20180917/', $filename);
                 }
 
                 $advert->update([
@@ -303,9 +303,9 @@ class AdsController extends Controller
                     // deal with the file name
                     $temp_name = str_random(20);
                     $filename = $temp_name . "." . $ext;
-                    $dirname = date('Ymd',time());
+                    //$dirname = date('Ymd',time());
                     // save image
-                    $uploadfile->move('./uploads/' . $dirname, $filename);
+                    $uploadfile->move('./uploads/20180917/', $filename);
                 }
 
                 $advert->update([
