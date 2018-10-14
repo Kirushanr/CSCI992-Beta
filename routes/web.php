@@ -25,7 +25,7 @@ Route::get('/post/ad', function () {
 //Route::get('/users/{user}', 'UsersController@show')->name('users.show');
 
 Route::get('/user/selling', 'UserController@selling')->name('user.selling');
-Route::get('/user/wish', 'UserController@wish')->name('user.wish');
+Route::get('/user/wishList', 'UserController@wishList')->name('user.wishList');
 
 // post ad
 Route::get('/post/ad/{type}', 'AdsController@create')->name('createAd');
@@ -38,3 +38,7 @@ Route::patch('/post/ad/{ad}', 'AdsController@update')->name('updateAd');
 
 // advertise detail page
 Route::get('/ad/{ad}', 'AdsController@show')->name('showAd');
+
+// wish list(show, add and delete)
+Route::post('/ad/{ad}/favorite', 'AdsController@favor')->name('ad.favor');
+Route::delete('/ad/{ad}/favorite', 'AdsController@disfavor')->name('ad.disfavor');

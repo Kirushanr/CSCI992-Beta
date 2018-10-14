@@ -13,6 +13,36 @@ use DB;
 
 class AdsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['show']
+        ]);
+    }
+
+    public function show($ad_id, Request $request)
+    {
+        $advert = Ad::where('id', $ad_id);
+        $type = $advert->pluck('type')[0];
+        $ad = DB::table('ads')->find($ad_id);
+
+        if ($type == '1') {
+            // Book::where
+            $categories = DB::table('books')->where('advert_id', $ad_id);
+        } elseif ($type == '2') {
+            $categories = DB::table('electronics')->where('advert_id', $ad_id);
+        } else {
+            $categories = DB::table('kitchenwares')->where('advert_id', $ad_id);
+        }
+
+        $favored = false;
+        // if user is not login return null, login return user object
+        if ($user = $request->user()) {
+            $favored = boolval($user->favoriteAds()->find($ad_id));
+        }
+        return view('adverts.detail', compact('type', 'advert', 'categories', 'favored'));
+    }
+
     public function create($type)
     {
         if ($type == 1) {
@@ -331,5 +361,25 @@ class AdsController extends Controller
             echo 'please login';
             return redirect('/');
         }
+    }
+
+    public function favor(Ad $ad, Request $request)
+    {
+        $user = $request->user();
+        if ($user->favoriteAds()->find($ad->id)) {
+            return [];
+        }
+
+        $user->favoriteAds()->attach($ad);
+
+        return [];
+    }
+
+    public function disfavor(Ad $ad, Request $request)
+    {
+        $user = $request->user();
+        $user->favoriteAds()->detach($ad);
+
+        return [];
     }
 }

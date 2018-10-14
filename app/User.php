@@ -32,4 +32,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ad::class);
     }
+
+    public function favoriteAds()
+    {
+        // many to many relationship(param 1: related class, param 2: middle table name)
+        return $this->belongsToMany(Ad::class, 'user_favorite_ads', 'user_id', 'advert_id')
+            ->withTimestamps()
+            ->orderBy('user_favorite_ads.created_at', 'desc');
+    }
 }

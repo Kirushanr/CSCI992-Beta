@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="product_text">
                                         <span class="product_title">
-                                            <a target="_blank" href="#">{{ $ad->title }}</a>
+                                            <a target="_blank" href="{{ route('showAd', $ad->id) }}">{{ $ad->title }}</a>
                                         </span>
                                         <span class="description">{{ $ad->description }}</span>
                                     </div>

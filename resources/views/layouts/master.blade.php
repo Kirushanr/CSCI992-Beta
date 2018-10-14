@@ -54,7 +54,7 @@
                             </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="{{ route('user.selling') }}">My Selling Products</a>
-                            <a class="dropdown-item" href="{{ route('user.wish') }}">Wish List</a>
+                            <a class="dropdown-item" href="{{ route('user.wishList') }}">Wish List</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
                                       {{ __('Logout') }}
