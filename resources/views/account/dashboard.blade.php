@@ -133,7 +133,17 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{route('user-dashboard')}}">
+                                    <a class="nav-link" href="{{route('user-messages')}}">
+                                        <span data-feather="shopping-cart"></span>
+                                       
+                                        My Messages 
+                                        @if(Auth::user()->newThreadsCount()>0)
+                                        <span class="badge badge-danger">{{ Auth::user()->newThreadsCount() }}</span>
+                                        @endif
+                                    </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('user-dashboard')}}">
                                 <span data-feather="home"></span>
                                 My Adverts <span class="sr-only">(current)</span>
                               </a>
@@ -145,6 +155,7 @@
                                 My WishList
                               </a>
                         </li>
+                      
 
                     </ul>
                   

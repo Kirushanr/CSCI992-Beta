@@ -77,7 +77,7 @@ class AdvertsController extends Controller
             }
 
             if ($advert_insert) {
-                Notification::send(User::first(), new NewAdvert($advert->id, $validated["type"]));
+                Notification::send(User::first(), new NewAdvert($advert->id, $validated["type"],''));
                 return redirect()->route('post-ad-type.show', ['type' => $validated["type"]])->with(['result' =>'success', 'advert_id'=>$advert->id]);
             }
         } catch (Exception $exception) {
