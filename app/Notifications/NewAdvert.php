@@ -18,7 +18,7 @@ class NewAdvert extends Notification
      *
      * @return void
      */
-    public function __construct($advert, $type)
+    public function __construct($advert, $type, $notificationtype)
     {
         $this->advert = $advert;
         $this->type= $type;
