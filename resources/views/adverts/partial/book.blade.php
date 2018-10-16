@@ -17,14 +17,12 @@
                         <div class="form-group">
                             <label for="ISBN">ISBN<span class="text text-danger"> *</span></label>
                             <input type="text" class="form-control {{ $errors->has('ISBN') ? ' is-invalid' : '' }}" id="ISBN" required name="ISBN">
+                            @if ($errors->has('ISBN'))
+                            <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('ISBN') }}</strong>
+                            </span> 
+                            @endif
                         </div>
-
-
-                        @if ($errors->has('ISBN'))
-                        <span class="invalid-feedback" role="alert">
-                                   <strong>{{ $errors->first('ISBN') }}</strong>
-                        </span> 
-                        @endif
                 </div>
         </div>
         <div class="row">
