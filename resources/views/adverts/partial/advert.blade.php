@@ -11,7 +11,7 @@
 </div>
 <div class="form-group">
     <label for="description">Describe your advert<span class="text text-danger"> *</span></label>
-    <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" rows="2" name="description" value="{{old('description')}}"></textarea>
+    <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" rows="2" name="description" >"{{old('description')}}</textarea>
 
     @if ($errors->has('description'))
     <span class="invalid-feedback" role="alert">
