@@ -29,9 +29,9 @@ class AdvertStoreRequest extends FormRequest
             'title' => 'required',
             'description' => 'required',
             'price' => 'numeric',
-            'photos.*' => 'required|image|mimes:png,jpeg,jpg,jpe',
+            'photos.*' => 'required|image|mimes:png,jpeg,jpg',
             'author'=>'sometimes|required',
-            'ISBN'=>['sometimes', new ISBN],
+            'ISBN'=>['sometimes','required', new ISBN],
             'subjectcode' =>'sometimes',
             'edition'=>'sometimes',
             'type'=>'string',
@@ -55,7 +55,7 @@ class AdvertStoreRequest extends FormRequest
             'photos.*.max' => 'Your photo is too large, must be less than :max kb.',
             'photos.*.mimes' => 'We only accept :values.',
             'author.required'=>'Author name is required',
-            'haswarranty.required'=>'Required'
+            'haswarranty.required'=>'Required',
         ];
     }
 }
