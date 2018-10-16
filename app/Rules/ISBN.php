@@ -61,6 +61,6 @@ class ISBN implements Rule
      */
     public function message()
     {
-        return 'Invalid ISBN Number';
+        return 'Invalid ISBN number';
     }
 }
