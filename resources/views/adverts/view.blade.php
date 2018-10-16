@@ -11,14 +11,18 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="http://placehold.it/350x250/612b65/fff&amp;text=Product+Image+5" alt="First slide">
+                        <img class="d-block w-100" src="{{URL::asset('storage/' . $model->image_url_1)}}" alt="First slide">
                     </div>
+                    @if($model->image_url_2!=='public/default.jpeg')
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="http://placehold.it/350x250/612b65/fff&amp;text=Product+Image+5" alt="Second slide">
+                        <img class="d-block w-100" src="{{URL::asset('storage/' . $model->image_url_2)}}" alt="Second slide">
                     </div>
+                    @endif
+                    @if($model->image_url_3!=='public/default.jpeg')
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="http://placehold.it/350x250/612b65/fff&amp;text=Product+Image+5" alt="Third slide">
+                        <img class="d-block w-100" src="{{URL::asset('storage/' . $model->image_url_2)}}" alt="Second slide">
                     </div>
+                    @endif
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -37,8 +41,28 @@
                 <p class="">Posted on : <span class="font-weight-bold">{{$model["created_at"]}}</span> </p>
                 <p class="">Posted by : <span class="text-capitalize">{{$username}}</span> </p>
                 <p><button class="btn btn-primary">Contact Seller</button>  </p>
-                <p class=""><a class="btn btn-alert px-2 text-success font-weight-bold" href="">Add to wishlist</a><a class="btn btn-alert px-2 text-danger font-weight-bold" href="">Report Advert</a> </p>
+                <p class=""><a class="btn btn-alert px-2 text-success font-weight-bold" href="#wishlist" id="wishlist" data-id="{{$model["id"]}}">Add to wishlist</a><a class="btn btn-alert px-2 text-danger font-weight-bold" href="">Report Advert</a> </p>
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    $("#wishlist").on("click", function(){
+        var id= $(this).attr('data-id');
+
+        $.ajax({
+            method: "POST",
+            headers: {
+                'X-CSRF-Token': '{{ csrf_token() }}',
+            },
+            
+            url: "/wishlist",
+            data: { advert_id: id}
+        }).done(function( msg ) {
+            alert("Advert added to your wishlist")
+        });
+    })
+
+</script>
 @endsection
