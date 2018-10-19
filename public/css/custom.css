@@ -33,3 +33,9 @@
 @media (max-width: 767px) {
  
 }
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
+}
+
+.star-rating .fa-star{color: red;}

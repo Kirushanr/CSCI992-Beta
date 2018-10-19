@@ -5,11 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cmgmyr\Messenger\Traits\Messagable;
+use App\Traits\Rateable;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use Messagable;
+    use Rateable;
 
 
     const ADMIN_TYPE = 'admin';

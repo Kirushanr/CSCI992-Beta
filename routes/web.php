@@ -47,9 +47,12 @@ Route::get('/advert/{id}','AdvertsController@viewAdvert')->name('view-advert');
 Route::post('/wishlist','AddToWishList@post')->name('wishlist.post');
 
 Route::get('edit/ad/{id}','AdvertsController@editAdvert')->name('edit.show');
-
 Route::post('edit/ad/{id}','AdvertsController@updateAdvert')->name('update.ad');
-
 #Route::get('/messages/{id}','MessagesController@index')->name('message-landing');
 Route::get('/message/seller/{id}','MessagesController@create')->name('message-create');
 Route::post('/message/seller/{id}','MessagesController@store')->name('message-store');
+
+
+Route::get('/review/{id}','ReviewController@index')->name('reviews.show');
+Route::get('/review/user/{id}','ReviewController@post')->name('review.post');
+Route::post('/review/user/{id}','ReviewController@store')->name('review.store');
