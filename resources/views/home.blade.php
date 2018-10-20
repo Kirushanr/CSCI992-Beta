@@ -37,34 +37,34 @@
     <div class="container">
         <h3 class="font-weight-light"> Explore BuynSell </h3>
     </div>
-    <div class="row mt-3 justify-content-center py-4">
+    <div class="row mt-2 justify-content-center py-2">
 
-        <div class="col-md-4 mb-3 explore">
-            <a href="">
+        <div class="col-md-3 mb-3 explore">
+            <a href="{{route('search')}}?category=1">
                 <div class="card">
                     <div class="card-header bg-dark text-white">Books</div>
-                    <img class="card-img-top" src="https://images.pexels.com/photos/775998/pexels-photo-775998.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('/images/books.jpeg')}}"
+                        alt="Card image cap" style="height:100px;">
                 </div>
             </a>
         </div>
 
-        <div class="col-md-4 mb-3 explore">
-            <a href="">
+        <div class="col-md-3 mb-3 explore">
+            <a href="{{route('search')}}?category=2">
                 <div class="card">
                     <div class="card-header bg-dark text-white">Electronics</div>
-                    <img class="card-img-top" src="https://images.pexels.com/photos/325153/pexels-photo-325153.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('/images/electronics.jpeg')}}"
+                        alt="Card image cap" style="height:100px;">
                 </div>
             </a>
         </div>
 
-        <div class="col-md-4 mb-3 explore">
-            <a href="">
+        <div class="col-md-3 mb-3 explore">
+            <a href="{{route('search')}}?category=3">
                 <div class="card">
-                    <div class="card-header bg-dark text-white">Kitchenware</div>
-                    <img class="card-img-top" src="https://images.pexels.com/photos/350417/pexels-photo-350417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        alt="Card image cap">
+                    <div class="card-header bg-dark text-white">Essentials</div>
+                    <img class="card-img-top" src="{{asset('/images/essentials.jpeg')}}"
+                        alt="Card image cap" style="height:100px;">
                 </div>
             </a>
         </div>
