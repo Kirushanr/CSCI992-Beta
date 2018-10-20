@@ -40,12 +40,13 @@ class AdvertsController extends Controller
 
     public function postAdvert(AdvertStoreRequest $request)
     {
+        $user_id=Auth::id();
         $validated = $request->validated();
         $advert = new Advert;
         $advert->title = $validated["title"];
         $advert->description = $validated["description"];
         $advert->price = $validated["price"];
-        $advert->user_id = 1;
+        $advert->user_id =  $user_id;
         $advert->advert_type = $validated["type"];
         $photos = $validated["photos"];
         $paths = [];
@@ -80,9 +81,23 @@ class AdvertsController extends Controller
                 $electronics->advert_id = $advert->id;
                 $electronics->save();
             }
-
+           
             if ($advert_insert) {
-                Notification::send(User::first(), new NewAdvert($advert->id, $validated["type"],''));
+                //send notifications to users if notification for the category is on
+                if($validated["type"]=='book'){
+                    $users=User::where('book_notification',1)->where('id', '!=', $user_id)->get();
+                    Notification::send($users, new NewAdvert($advert->id, $validated["type"],''));
+
+                }else if($validated["type"] == "electronics"){
+                    $users=User::where('electronic_notification',1)->where('id', '!=', $user_id)->get();
+                    Notification::send($users, new NewAdvert($advert->id, $validated["type"],''));
+                
+                }else if($validated["type"]="essentials"){
+                    $users=User::where('essential_notification',1)->where('id', '!=', $user_id)->get();
+                    Notification::send($users, new NewAdvert($advert->id, $validated["type"],''));
+
+                }
+                
                 return redirect()->route('post-ad-type.show', ['type' => $validated["type"]])->with(['result' =>'success', 'advert_id'=>$advert->id]);
             }
         } catch (Exception $exception) {
@@ -95,7 +110,18 @@ class AdvertsController extends Controller
         try {
             $model = Advert::findOrFail($id);
             $username  = User::findOrFail($model->user_id)->name;
-            
+            if($model->expired==true){
+                return view("adverts.banned");
+            }
+
+            if($model->advert_type=="book"){
+                $books = Book::where('advert_id',$model->id)->get();
+                return view('adverts.view', compact('model', 'username','books'));
+            }else if($model->advert_type=="electronics"){
+                $electronics = Electronics::where('advert_id',$model->id)->get();
+                return view('adverts.view', compact('model', 'username','electronics'));
+            }
+
             return view('adverts.view', compact('model', 'username'));
         } catch (ModelNotFoundException $mexception) {
             abort(404);
