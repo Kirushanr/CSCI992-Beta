@@ -22,7 +22,7 @@
                     <div class="card-body">
                       <blockquote class="blockquote mb-0">
                         <p>{{$rating->review}}</p>
-                        <footer class="blockquote-footer">Posted on {{\Carbon\Carbon::createFromTimeStamp(strtotime($rating->created_at))->diffForHumans()}} by <cite title="Source Title">{{$ratings->reviewer}}</cite></footer>
+                        <footer class="blockquote-footer">Posted on {{\Carbon\Carbon::createFromTimeStamp(strtotime($rating->created_at))->diffForHumans()}} by <cite title="Source Title">{{$rating->reviewer}}</cite></footer>
                       </blockquote>
                     </div>
             </div>

@@ -5,13 +5,19 @@
 
 @endsection
 @section('content')
+@if(session()->has('result') && session()->get('result') =='success' )
+    <div class="alert alert-success mb-3 text-center">
+        <p class="mt-2 font-weight-bold">Your review is posted successfully </p>
+    </div>
+@endif
 <div class="container">
+        <h5 class="text-center mt-4 text-capitalize">Write your review, for {{$seller}}</h5>
         <form class="mt-5"  method="POST" action="{{ route('review.store', $id) }}">
         @csrf
-            <input type="hidden" value="{{$id}}" name="user">
+            <input type="hidden" value="{{$id}}" name="owner">
             <div class="form-group">
                     <label for="review">Enter your review<span class="text text-danger"> *</span></label>
-                    <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="review" rows="2" name="review" required>"{{old('review')}}</textarea>
+                    <textarea class="form-control{{ $errors->has('review') ? ' is-invalid' : '' }}" id="review" rows="2" name="review" required>{{old('review')}}</textarea>
                 
                     @if ($errors->has('review'))
                     <span class="invalid-feedback" role="alert">
