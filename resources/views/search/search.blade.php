@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-12">
                         <a href="#" class="float-left" data-toggle="modal" data-target="#exampleModalCenter">Sort</a>
-                        <a href="#" class="float-right">Filter</a>
+                       
                     </div>
                 </div>
 
