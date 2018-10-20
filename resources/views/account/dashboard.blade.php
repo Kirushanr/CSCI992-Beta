@@ -3,6 +3,7 @@
 <head>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         body {
             font-size: .875rem;
@@ -155,6 +156,12 @@
                                 My WishList
                               </a>
                         </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{route('notification.show')}}">
+                                    <span data-feather="shopping-cart"></span>
+                                     Notification settings
+                                  </a>
+                            </li>
                       
 
                     </ul>
@@ -164,6 +171,8 @@
                 </div>
             </nav>
             @yield('content');
+            <script src="{{asset('js/app.js')}}"></script>
+            @yield('script')
            
         </div>
     </div>

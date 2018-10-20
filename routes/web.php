@@ -21,6 +21,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::get('user/dashboard','UserAccountController@index')->name('user-dashboard');    
+
+Route::get('user/dashboard/notification','UserAccountController@notifications')->name('notification.show');
+Route::post('user/dashboard/notification','UserAccountController@setNotifications')->name('notification.update');
 Route::get('user/dashboard/wishlist','UserAccountController@getWishList')->name('user-wishlist');
 Route::get('user/dashboard/messages','MessagesController@getThreads')->name('user-messages');
 Route::get('user/dashboard/messages/{id}','MessagesController@show')->name('user-messages.show');
@@ -33,7 +36,7 @@ Route::get('/post/ad','AdvertsController@index')->name('post-ad');
 //Route to GET the post advert page based on the type parameter
 Route::get('/post/ad/{type}','AdvertsController@getAdvert')->name('post-ad-type.show');
 
-Route::get('/search',SearchAdvertController::class);
+Route::get('/search',SearchAdvertController::class)->name('search');
 
 Route::post('/post/ad','AdvertsController@postAdvert')->name('store-ad');
 
@@ -65,3 +68,4 @@ Route::get('/admin/dashboard/banned', 'AdminController@getBannedAdverts')->middl
 
 Route::get('/report/{id}','ReportController@index')->name('report.show');
 Route::post('/report/{id}','ReportController@store')->name('report.store');
+
