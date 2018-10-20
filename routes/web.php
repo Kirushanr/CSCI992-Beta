@@ -58,6 +58,9 @@ Route::post('/review/user/{id}','ReviewController@store')->name('review.store');
 Route::get('/admin/dashboard', 'AdminController@admin')    
     ->middleware('is_admin')    
     ->name('admin');
+Route::get('/admin/dashboard/reported', 'AdminController@getReportedAdverts')->middleware('is_admin')  ->name('reported.adverts');
+Route::post('ban','AdminController@banAdvert')->middleware('is_admin')  ->name('ban.report');
+Route::get('/admin/dashboard/banned', 'AdminController@getBannedAdverts')->middleware('is_admin') ->name('banned.adverts');
 
 
 Route::get('/report/{id}','ReportController@index')->name('report.show');

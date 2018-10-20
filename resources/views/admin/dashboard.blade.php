@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
             <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
             <style>
@@ -109,7 +110,6 @@
     <body>
             <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
                     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">BuynSell</a>
-                    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
                     <ul class="navbar-nav px-3">
                       <li class="nav-item text-nowrap">
                         <a class="nav-link" href="#">Sign out</a>
@@ -123,21 +123,18 @@
                         <div class="sidebar-sticky">
                           <ul class="nav flex-column">
                             <li class="nav-item">
-                              <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
-                              </a>
+                            
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#">
+                              <a class="nav-link" href="{{route('reported.adverts')}}">
                                 <span data-feather="file"></span>
-                                Moderated Adverts
+                                Reported Adverts
                               </a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#">
+                              <a class="nav-link" href="{{route('banned.adverts')}}">
                                 <span data-feather="shopping-cart"></span>
-                                Banned Accounts
+                                Banned Adverts
                               </a>
                             </li>
                            
@@ -149,55 +146,13 @@
                       </nav>
               
                       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                        
+                          @yield('content')          
                                       
               
-                        <h2>Reported Adverts</h2>
-                        <div class="table-responsive">
-                          <table class="table table-striped table-sm">
-                            <thead>
-                              <tr>
-                                <th>Advert ID</th>
-                                <th>Creator of the advert</th>
-                                <th>Reported by</th>
-                                <th>Type of violation</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                            <td>1,001</td>
-                                            <td>Alex</td>
-                                            <td>Kevin</td>
-                                            <td>Spam</td>
-                                            <td><button class="btn btn-primary">view</button></td>
-                                    </tr>
-                                    <tr>
-                                            <td>1,003</td>
-                                            <td>Tim</td>
-                                            <td>Alex</td>
-                                            <td>Abusive/Harmful</td>
-                                            <td><button class="btn btn-primary">view</button></td>
-                                    </tr>  
-                                    <tr>
-                                            <td>1,004</td>
-                                            <td>Tim</td>
-                                            <td>John</td>
-                                            <td>Abusive/Harmful</td>
-                                            <td><button class="btn btn-primary">view</button></td>
-                                    </tr>  
-                                    <tr>
-                                            <td>1,005</td>
-                                            <td>Tim</td>
-                                            <td>Alex</td>
-                                            <td>Sale or promotion of counterfeit goods</td>
-                                            <td><button class="btn btn-primary">view</button></td>
-                                    </tr>                
-                            </tbody>
-                          </table>
-                        </div>
                       </main>
                     </div>
                   </div>
+                  <script src="{{asset('js/app.js')}}"></script>
+                  @yield('script')
     </body>
 </html>

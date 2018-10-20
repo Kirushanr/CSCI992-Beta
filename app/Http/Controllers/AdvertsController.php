@@ -17,6 +17,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AdvertsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request)
     {
         return view('adverts.home');

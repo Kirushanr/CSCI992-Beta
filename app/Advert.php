@@ -32,8 +32,8 @@ class Advert extends Model
         return $this->belongsToMany('App\User','wish_list','user_id', 'advert_id');
     }
 
-    public function reportedAdverts()
+    public function reported()
     {
-        return $this->belongsToMany('App\User','reports','user_id', 'advert_id');
+        return $this->belongsToMany('App\User','reports','user_id', 'advert_id')->withTimestamps();
     }
 }

@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-
+use Event;
+use DB;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         //Fix for key length 
         #Reference https://laravel-news.com/laravel-5-4-key-too-long-error
         Schema::defaultStringLength(191);
+       
     }
 
     /**

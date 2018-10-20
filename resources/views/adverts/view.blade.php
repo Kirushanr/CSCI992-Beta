@@ -41,7 +41,7 @@
                 <p class="">Posted on : <span class="font-weight-bold">{{$model["created_at"]}}</span> </p>
                 <p class="">Posted by : <span class="text-capitalize"><a href="{{route('reviews.show', $model['user_id'])}}">{{$username}}</a></span> </p>
                 <p><a href="{{route('message-create', $model['id'] )}}" class="btn btn-primary">Contact Seller</a>  </p>
-                <p class=""><a class="btn btn-alert px-2 text-success font-weight-bold" href="#wishlist" id="wishlist" data-id="{{$model["id"]}}">Add to wishlist</a><a class="btn btn-alert px-2 text-danger font-weight-bold" href="">Report Advert</a> </p>
+                <p class=""><a class="btn btn-alert px-2 text-success font-weight-bold" href="#wishlist" id="wishlist" data-id="{{$model["id"]}}">Add to wishlist</a><a class="btn btn-alert px-2 text-danger font-weight-bold" href="{{route('report.store', $model['id'] )}}">Report Advert</a> </p>
         </div>
     </div>
 </div>
