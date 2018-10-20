@@ -55,5 +55,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Advert','wish_list','user_id', 'advert_id');
     }
 
+    public function reports()
+    {
+        return $this->belongsToMany('App\Report','reports','user_id', 'advert_id');
+    }
+
 
 }

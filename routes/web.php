@@ -20,11 +20,6 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::get('/admin/dashboard', 'AdminController@admin')    
-    ->middleware('is_admin')    
-    ->name('admin');
-
-
 Route::get('user/dashboard','UserAccountController@index')->name('user-dashboard');    
 Route::get('user/dashboard/wishlist','UserAccountController@getWishList')->name('user-wishlist');
 Route::get('user/dashboard/messages','MessagesController@getThreads')->name('user-messages');
@@ -56,3 +51,14 @@ Route::post('/message/seller/{id}','MessagesController@store')->name('message-st
 Route::get('/review/{id}','ReviewController@index')->name('reviews.show');
 Route::get('/review/user/{id}','ReviewController@post')->name('review.post');
 Route::post('/review/user/{id}','ReviewController@store')->name('review.store');
+
+
+
+
+Route::get('/admin/dashboard', 'AdminController@admin')    
+    ->middleware('is_admin')    
+    ->name('admin');
+
+
+Route::get('/report/{id}','ReportController@index')->name('report.show');
+Route::post('/report/{id}','ReportController@store')->name('report.store');

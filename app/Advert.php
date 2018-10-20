@@ -27,9 +27,13 @@ class Advert extends Model
         return $this->belongsTo('App\User');
     }
 
-
     public function userfavorites()
     {
         return $this->belongsToMany('App\User','wish_list','user_id', 'advert_id');
+    }
+
+    public function reportedAdverts()
+    {
+        return $this->belongsToMany('App\User','reports','user_id', 'advert_id');
     }
 }
