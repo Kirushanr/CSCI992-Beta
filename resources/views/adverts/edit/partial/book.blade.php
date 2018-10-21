@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label for="author">Author<span class="text text-danger"> *</span></label>
                 <input type="text" class="form-control {{ $errors->has('author') ? ' is-invalid' : '' }}" id="author" required name="author"
-                    value="{{is_null(old('description')) ?  $book->author : old('author') }}"> @if ($errors->has('author'))
+                    value="{{is_null(old('author')) ?  $book->author : old('author') }}"> @if ($errors->has('author'))
                 <span class="invalid-feedback" role="alert">
                                    <strong>{{ $errors->first('author') }}</strong>
                         </span> @endif

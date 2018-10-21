@@ -133,10 +133,12 @@ class AdvertsController extends Controller
         try {
             $model = Advert::findOrFail($id);
             $type = $model->advert_type;
-            if ($type =='Book') {
+            
+            if ($type =='book') {
                 $book = Book::where('advert_id', '=', $model->id)->firstOrFail();
                 return view('adverts.edit.advert', ['type' => $type,'book'=>$book, 'advert'=>$model, 'electronics'=>[]]);
-            } elseif ($type == 'Electronics') {
+                
+            } elseif ($type == 'electronics') {
                 $book=[];
                 $electronics = Electronics::where('advert_id', '=', $model->id)->firstOrFail();
                 return view('adverts.edit.advert', ['type' => $type,'electronics'=>$electronics, 'advert'=>$model,'book'=>[]]);
