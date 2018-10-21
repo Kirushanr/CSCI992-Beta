@@ -14,7 +14,8 @@ class MakeNullableBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            
+            $table->string('edition', 100)->nullable()->change();
+            $table->string('course_code',20)->nullable()->change();
         });
     }
 
