@@ -79,11 +79,13 @@ class SearchAdvertController extends Controller
             )->where([
                 ['visibility', '=', true],
                 ['expired', '=', false],
-            ])->where('title', 'like', '%' . $searchterm . '%')
-            ->orWhere('description', 'like', '%' . $searchterm . '%')
-            ->orWhere('electronics.model', 'like', '%' . $searchterm. '%')
-            ->orWhere('electronics.type', 'like', '%' . $searchterm. '%');
-
+            ])->where(function($query) use ($searchterm) {
+                $query->where('title', 'like', '%' . $searchterm . '%')
+                    ->orWhere('description', 'like', '%' . $searchterm . '%')
+                    ->orWhere('electronics.model', 'like', '%' . $searchterm. '%')
+                    ->orWhere('electronics.type', 'like', '%' . $searchterm. '%');
+            });
+            
         if ($param == "newest") {
             $DB = $DB->orderBy('adverts.created_at', 'desc');
         } else if ($param == "pricelowhigh") {
@@ -116,8 +118,10 @@ class SearchAdvertController extends Controller
         )->where([
             ['visibility', '=', true],
             ['expired', '=', false],
-        ])->where('title', 'like', '%' . $searchterm . '%')
-        ->orWhere('description', 'like', '%' . $searchterm . '%');
+        ])->where(function($query) use ($searchterm) {
+            $query->where('title', 'like', '%' . $searchterm . '%')
+            ->orWhere('description', 'like', '%' . $searchterm . '%');
+        });
 
         if ($param == "newest") {
             $DB = $DB->orderBy('adverts.created_at', 'desc');
@@ -151,11 +155,15 @@ class SearchAdvertController extends Controller
             )->where([
                 ['adverts.visibility', '=', true],
                 ['adverts.expired', '=', false],
-            ])->where('title', 'like', '%' . $searchterm . '%')
-            ->orWhere('description', 'like', '%' . $searchterm . '%')
-            ->orWhere('books.course_code', 'like', '%' . $searchterm. '%')
-            ->orWhere('books.author', 'like', '%' . $searchterm. '%')
-            ->orWhere('books.ISBN', 'like', '%' . $searchterm. '%');
+            ])->where(function($query) use ($searchterm) {
+
+                $query->where('title', 'like', '%' . $searchterm . '%')
+                ->orWhere('description', 'like', '%' . $searchterm . '%')
+                ->orWhere('books.course_code', 'like', '%' . $searchterm. '%')
+                ->orWhere('books.author', 'like', '%' . $searchterm. '%')
+                ->orWhere('books.ISBN', 'like', '%' . $searchterm. '%');
+            });
+            
 
         if ($param == "newest") {
             $DB = $DB->orderBy('adverts.created_at', 'desc');
@@ -191,8 +199,10 @@ class SearchAdvertController extends Controller
             ['visibility', '=', true],
             ['expired', '=', false],
             ['advert_type','=','essentials']
-        ])->where('title', 'like', '%' . $searchterm . '%')
-        ->orWhere('description', 'like', '%' . $searchterm . '%');
+        ])->where(function($query) use ($searchterm) {
+            $query->where('title', 'like', '%' . $searchterm . '%')
+            ->orWhere('description', 'like', '%' . $searchterm . '%');
+        });
 
         if ($param == "newest") {
             $DB = $DB->orderBy('adverts.created_at', 'desc');
@@ -203,7 +213,7 @@ class SearchAdvertController extends Controller
         } else {
             $DB = $DB->orderBy('adverts.title', 'asc');
         }
-
+        
 
         $data = $DB->get();
         return $data;
