@@ -1,6 +1,6 @@
 @extends('account.dashboard')
 @section('content')
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-5">
+<main role="main" class="col-md-12  col-lg-12 col-sm-12  mt-5">
     <div class="table-responsive"> 
         <table class="table table-bordered table-sm text-center">
             <thead>
@@ -17,7 +17,7 @@
                 </tr>
                 @empty
                 <div class="col-md-12">
-                    <p class="alert alert-danger font-weight-bold mt-2 text-center">You havent posted any adverts yet ...</p>
+                    <p class="alert alert-danger font-weight-bold mt-2 text-center">You havent added any adverts to wishlist ...</p>
                 </div>
                 @endforelse
             </tbody>

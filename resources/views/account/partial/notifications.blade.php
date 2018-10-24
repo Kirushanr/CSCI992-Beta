@@ -1,7 +1,7 @@
 @extends('account.dashboard')
 @section('content')
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-5">
+<main role="main" class="col-md-12  col-lg-12 col-sm-12  mt-5">
      <h5 class="mb-4 text-primary">Turn on notifications, if you want to be the first person to check out what's new  </h5>
         <div class="input-group mb-3">
                 <div class="input-group-prepend">
