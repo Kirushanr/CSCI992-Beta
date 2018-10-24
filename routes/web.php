@@ -58,7 +58,7 @@ Route::post('/review/user/{id}','ReviewController@store')->name('review.store');
 
 
 
-Route::get('/admin/dashboard', 'AdminController@admin')    
+Route::get('/admin/dashboard', 'AdminController@getReportedAdverts')    
     ->middleware('is_admin')    
     ->name('admin');
 Route::get('/admin/dashboard/reported', 'AdminController@getReportedAdverts')->middleware('is_admin')  ->name('reported.adverts');
