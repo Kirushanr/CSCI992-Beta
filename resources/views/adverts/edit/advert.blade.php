@@ -13,7 +13,7 @@
 @include('adverts.edit.partial.advert')
 <hr>
 <div class="alert alert-primary">Lets make your advert standout</div>
-<h1>{{$type}}</h1>
+
 @includeWhen($type=="book",'adverts.edit.partial.book', ['book'=>$book])
 @includeWhen($type=="electronics",'adverts.edit.partial.electronics', ['electronics'=>$electronics])
 
