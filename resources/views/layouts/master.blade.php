@@ -39,13 +39,17 @@
                     <a class="nav-link text-white rounded-0 sell" href="{{ route('post-ad') }}">Sell Your Stuff +</a>
                     <a class="nav-link text-white" href="#services">Help</a> @guest
                     <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
-                    <a class="nav-link text-white" href="{{ route('register') }}">Register</a> @else
+                    <a class="nav-link text-white" href="{{ route('register') }}">Register</a> 
+                    @else
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               My Account
                             </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @if(Auth::user()->type=="admin")
+                            <a class="dropdown-item" href="{{ route('reported.adverts') }}">Admin Dashboard</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('user-dashboard') }}">Dashboard</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
