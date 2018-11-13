@@ -12,6 +12,7 @@ use App\Electronics;
 use App\User;
 use App\Notifications\NewAdvert;
 use Auth;
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -37,6 +38,21 @@ class AdvertsController extends Controller
         }
         abort(404);
     }
+
+
+    public function holdAdvert(Request $request){
+        $advert_id = $request->input('id');
+        $is_hold = $request->input('status');
+
+        $model = Advert::findOrFail($advert_id);
+        $model->visibility=($is_hold =='off' ? false : true);
+        $model->hold_till=Carbon::now()->addDays(2)->toDateString();
+        if($model->save()){
+            return "success";
+        }
+    }
+
+
 
     public function postAdvert(AdvertStoreRequest $request)
     {
@@ -112,6 +128,10 @@ class AdvertsController extends Controller
             $username  = User::findOrFail($model->user_id)->name;
             if($model->expired==true){
                 return view("adverts.banned");
+            }
+            
+            if($model->visibility==0){
+                return view("adverts.onhold")->with('date',$model->hold_till);
             }
 
             if($model->advert_type=="book"){

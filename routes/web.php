@@ -69,3 +69,4 @@ Route::get('/admin/dashboard/banned', 'AdminController@getBannedAdverts')->middl
 Route::get('/report/{id}','ReportController@index')->name('report.show');
 Route::post('/report/{id}','ReportController@store')->name('report.store');
 
+Route::post('/holdadvert','AdvertsController@holdAdvert');

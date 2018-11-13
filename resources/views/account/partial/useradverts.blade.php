@@ -14,6 +14,7 @@
                     <th>Advert ID</th>
                     <th>Title</th>
                     <th>Created Date</th>
+                    <th>Put advert on hold/release</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,17 @@
                     <td>{{$advert->id}}</td>
                     <td>{{$advert->title}}</td>
                     <td>{{$advert->created_at}}</td>
+                    <td>
+                        @if($advert->visibility == true)
+                        <a href="#" class="btn btn-warning" data-status="{{$advert->visibility}}" onclick="holdAdvert(this)" data-id="{{$advert->id}}">
+                            Hold
+                        </a>
+                        @else 
+                        <a href="#" class="btn btn-success" data-status="{{$advert->visibility}}" onclick="holdAdvert(this)" data-id="{{$advert->id}}">
+                            Release
+                        </a>
+                        @endif
+                    
                     <td><a href="{{route('edit.show', $advert->id)}}" class="btn btn-primary">Edit</a></td>
                 </tr>
                 @empty
@@ -33,4 +45,35 @@
         </table>
     </div>
 </main>
+@endsection
+
+@section('script')
+<script>
+        function holdAdvert(element){
+            var status= $(element).attr('data-status'); 
+            var id=$(element).attr('data-id');
+            var mode = (status==1)? 'off' : 'on';
+
+            $.ajax({
+                method: "POST",
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+                },
+                
+                url: "/holdadvert",
+                data: { id: id, status:mode}
+            }).done(function( msg ) {
+                console.log(msg);
+                if(msg=='success'){
+                    if(status==1){
+                        alert("Advert is put on hold");
+                    }
+                    else{
+                        alert("Advert is released");
+                    }
+                }
+                location.reload();
+            });
+        }
+</script>
 @endsection

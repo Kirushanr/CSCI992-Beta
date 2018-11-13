@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 
+
 class UserAccountController extends Controller
 {
     public function __construct()
@@ -45,4 +46,5 @@ class UserAccountController extends Controller
         }
         $user->save();
     }
+
 }
