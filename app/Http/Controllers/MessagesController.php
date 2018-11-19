@@ -133,9 +133,9 @@ class MessagesController extends Controller
         $participant->last_read = new Carbon;
         $participant->save();
         // Recipients
-        if (Input::has('recipients')) {
+        /*if (Input::has('recipients')) {
             $thread->addParticipant(Input::get('recipients'));
-        }
+        }*/
         return redirect()->route('user-messages.show', $id);
     }
 }
