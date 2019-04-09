@@ -1,6 +1,9 @@
 # CSCI992-Beta
 CSCI992 Project (BuynSell) code repository 
 
+#About
+This project was developed to demonstrate an idea of a buy and sell platform exculsive to students.
+
 # Instructions 
 1. Install composer 
     https://getcomposer.org/
